@@ -1,0 +1,241 @@
+.bqd-button {
+  padding: 3px 15px;
+  display: inline-block;
+  text-align: center;
+  align-items: center;
+  background-color: $white-transparent-50;
+  cursor: pointer;
+  position: relative;
+  border-radius: 2px;
+  white-space: nowrap;
+
+  .bqd-button-text {
+    color: $bq-primary-darkest;
+  }
+
+  .bqd-button-text-span {
+    width: 100%;
+  }
+
+  .bqd-button-icon {
+    color: $bq-primary-dark;
+
+    &.bqd-button-icon-left {
+      margin-right: 5px;
+    }
+
+    &.bqd-button-icon-right {
+      margin-left: 5px;
+    }
+  }
+
+  &:hover {
+    background-color: $white-transparent-75;
+  }
+
+  &.inactive, &.inactive:hover {
+    background-color: $button-inactive !important;
+    cursor: default;
+
+    * {
+      color: $button-inactive-text !important;
+    }
+  }
+
+  &.with-shadow {
+    box-shadow: 2px 2px 8px 1px $gray-transparent-25;
+  }
+
+  &[type='submit'] {
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    color: white;
+  }
+
+  @include breakpoint(phabletonly) {
+    padding: 3px;
+  }
+}
+
+
+.bqd-large-border-button {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 5px 10px;
+  box-shadow: 0 0 6px 2px rgba(1, 1, 1, .25);
+  cursor: pointer;
+
+  .bqd-button-text {
+    font-size: .8rem;
+    font-family: Muli, Helvetica, sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px $black-transparent-50;
+  }
+}
+
+.bqd-button-transparent-white {
+  border-color: $bq-gray-text;
+  background-color: $bqg-color-white10;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $white-transparent-25;
+  }
+}
+
+.bqd-button-transparent {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background-color: $bqg-color-white10;
+  }
+}
+
+.bqd-button-action {
+  background-color: $button-action;
+  //font-weight: bold;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $bq-primary-saturated;
+  }
+
+  &.active {
+    background-color: $bq-primary-saturated;
+  }
+}
+
+.bqd-button-attention {
+  background-color: $orange-bright;
+  font-weight: bold;
+  color: white;
+
+  &:hover {
+    background-color: $orange-mid;
+  }
+
+  &.active {
+    background-color: $orange-light;
+  }
+}
+
+.bqd-button-selection {
+  margin: 0 .5em;
+  background-color: $button-selection;
+  color: $bq-primary-dark;
+
+  * {
+    color: $bq-primary-dark;
+  }
+
+  &.dark-bg {
+    background-color: white;
+  }
+
+  &:hover {
+    background-color: $button-selection-hover !important;
+    color: white;
+
+    * {
+      color: white;
+    }
+  }
+
+  &.active {
+    background-color: $button-selection-active;
+    color: white;
+
+    * {
+      color: white;
+    }
+  }
+}
+
+.bqd-button-negative {
+  background-color: $button-negative;
+  font-weight: 500;
+
+
+  * {
+    color: white !important;
+  }
+
+  &:hover {
+    background-color: $button-negative-hover;
+  }
+
+  &.active {
+    background-color: $button-negative-active;
+  }
+}
+
+.bqd-button-cta {
+  background-color: $bqg-color-cta;
+  font-weight: 500;
+
+  * {
+    color: white !important;
+    text-shadow: 1px 1px 0 $bqg-color-dark-shadow;
+  }
+
+  &:hover {
+    background-color: darken($bqg-color-cta, 2);
+  }
+
+  &.active {
+    background-color: $bqg-color-cta;
+  }
+}
+
+.bqd-button-disabled {
+  background-color: $bqg-color-gray4X !important;
+  font-weight: 500;
+  cursor: none;
+
+  * {
+    color:  $bqg-color-gray2X !important;
+    text-shadow: 1px 1px 0 $bqg-color-dark-shadow;
+  }
+
+  &:hover {
+    background-color: $bqg-color-gray4X !important;
+  }
+
+  &.active {
+    background-color: $bqg-color-gray4X !important;
+  }
+}
+
+
+// Button with internal text and icon, whose icon rotates 180 degrees when
+// the flipped class is added
+.bqd-flip-icon-button {
+  cursor: pointer;
+  padding: 2px 7px;
+  border-radius: 2px;
+
+  i {
+    @include transition(transform .2s linear);
+    margin-left: 4px;
+  }
+
+  &.flipped {
+    i {
+      @include transform(rotate(180deg));
+    }
+  }
+
+  &:hover {
+    background-color: $bqg-color-white10;
+  }
+}

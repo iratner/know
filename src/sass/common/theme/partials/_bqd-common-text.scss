@@ -1,0 +1,127 @@
+.bqd-heading-2x-large {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.bqd-heading-x-large {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.bqd-heading-large {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.bqd-heading-medium {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.bqd-heading-small {
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.bqd-text-2x-large {
+  font-size: 1.3rem;
+}
+
+.bqd-text-x-large {
+  font-size: 1.15rem;
+}
+
+.bqd-text-large {
+  font-size: 1rem;
+}
+
+.bqd-text-medium {
+  font-size: .8rem;
+}
+
+.bqd-text-small {
+  font-size: .65rem;
+}
+
+.bqd-text-tiny {
+  font-size: .5rem;
+}
+
+.bqd-text-error {
+  font-family: 'Open Sans', sans-serif;
+  color: $bq-red-active;
+}
+
+.bqd-bold-shadow {
+  font-weight: bold;
+  text-shadow: 1px 1px 1px $black-transparent-50;
+}
+
+.bqd-text-bold {
+  font-weight: 700;
+}
+
+.bqd-text-medium-bold {
+  font-weight: 500;
+}
+
+.bqd-text-regular {
+  font-weight: 400;
+}
+
+.bqd-text-light {
+  font-weight: 300;
+}
+
+/******* FONT STYLES *******/
+.bqd-font-muli {
+  font-family: Muli, Roboto, sans-serif;
+}
+
+.bqd-font-open-sans {
+  font-family: "Open Sans", Roboto, sans-serif;
+}
+
+.bqd-font-roboto {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.bqd-font-slanted {
+  font-family: 'Courgette', cursive;
+}
+
+.bqd-font-quicksand {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.bqd-percent::after {
+  content: '%';
+}
+
+.bqd-parenthesis {
+  &::after {
+    content: ')';
+  }
+
+  &::before {
+    content: '(';
+  }
+}
+
+
+/**************** DEVICE SPECIFIES ****************************/
+.bqd-tablet-text {
+  display: none;
+
+  @include breakpoint(tablet) {
+    display: inline-block;
+  }
+}
+
+.bqd-mobile-text {
+  display: inline-block;
+
+  @include breakpoint(tablet) {
+    display: none;
+  }
+}

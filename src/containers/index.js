@@ -1,0 +1,1 @@
+// export { default as FoodApp } from './FoodApp';

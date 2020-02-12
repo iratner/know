@@ -1,0 +1,141 @@
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin accelerate {
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animationFillMode($mode) {
+    -webkit-animation-fill-mode: $mode;
+    -moz-animation-fill-mode: $mode;
+    -o-animation-fill-mode: $mode;
+    animation-fill-mode: $mode;
+}
+
+@mixin transition($t...) {
+    -webkit-transition: $t;
+    -moz-transition: $t;
+    -o-transition: $t;
+    transition: $t;
+}
+
+@mixin placeholder() {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        @content;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        @content;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        @content;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        @content;
+    }
+}
+
+@mixin transform($t...) {
+    -webkit-transform: $t;
+    -moz-transform: $t;
+    -o-transform: $t;
+    transform: $t;
+}
+
+@mixin brightenProperty($property, $color) {
+    #{$property}: adjust-hue($color, -20deg);
+}
+
+@mixin linearGradient($top, $bottom, $angle : null){
+
+    background: $top; /* Old browsers */
+
+    @if ($angle) {
+        background: -moz-linear-gradient(#{-$angle}deg,  $top 0%, $bottom 100%); /* FF3.6+ */
+        background: -webkit-linear-gradient(#{-$angle}deg,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+        background: linear-gradient(#{$angle - 180}deg,  $top 0%,$bottom 100%); /* W3C */
+    } @else {
+        background: -moz-linear-gradient(top,  $top 0%, $bottom 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  $top 0%,$bottom 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  $top 0%,$bottom 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  $top 0%,$bottom 100%); /* W3C */
+    }
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+  }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+  }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+    @media (max-width: 37.5em)  { @content ; }
+  }
+  @else if $point == phabletonly {
+    @media (max-width: 50em) { @content ; }
+  }
+  @else if $point == up-to-desktop {
+    @media (max-width: 70em) { @content ; }
+  }
+}

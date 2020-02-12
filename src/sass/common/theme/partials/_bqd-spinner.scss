@@ -1,0 +1,64 @@
+.blue-quill-spinner {
+
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  top: 0;
+  left: 0;
+  z-index: 20000 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  .blue-quill-spinner-shadow {
+    background: url('#{$image-path}loader/loader_shadow.png') center no-repeat;
+    background-size: 100%;
+
+      .blue-quill-spinner-inner {
+        background: url('#{$image-path}loader/loader.gif') center no-repeat;
+        background-size: 100%;
+        position: absolute;
+      }
+  }
+
+  &.small-spinner {
+    .blue-quill-spinner-shadow {
+      width: 112px;
+      height: 115px;
+    }
+
+    .blue-quill-spinner-inner {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &.medium-spinner {
+    .blue-quill-spinner-shadow {
+      width: 112px;
+      height: 115px;
+    }
+
+    .blue-quill-spinner-inner {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &.large-spinner {
+    .blue-quill-spinner-shadow {
+      width: 112px;
+      height: 115px;
+    }
+
+    .blue-quill-spinner-inner {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &.blue-quill-spinner-fixed {
+    position: fixed !important;
+  }
+}
