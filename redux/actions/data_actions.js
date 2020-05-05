@@ -1,16 +1,16 @@
-export const ADD_BUCKET_LIST_ITEM = 'ADD_BUCKET_LIST_ITEM';
-export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
+export const ADD_GOAL = 'ADD_GOAL';
+export const SET_COVID_DATA = 'SET_COVID_DATA';
 
-export function addBucketListItem(item) {
+export function addGoal(goal) {
     return {
-        type: ADD_BUCKET_LIST_ITEM,
-        item
+        type: ADD_GOAL,
+        goal
     }
 }
 
-export function updateItem(id) {
+export function setCovidData(data) {
     return {
-        type: TOGGLE_COMPLETED,
-        id
+        type: SET_COVID_DATA,
+        data
     }
 }

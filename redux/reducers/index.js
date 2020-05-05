@@ -1,2 +1,2 @@
-export { default as bucketData } from './bucketDataReducers';
-export { default as bucketUi } from './bucketUiReducers';
+export { default as data } from './dataReducers';
+export { default as ui } from './uiReducers';
