@@ -8,10 +8,9 @@ import reducers from "./redux/init_redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { Reactathon } from "./src";
-import { covidData, Fetcher } from "./src/Fetcher";
+import {covidData, Fetcher, FetchObject, MultiFetcher} from "./src/Fetcher";
 import { setCovidData } from "./redux/actions/data_actions";
 import memoizeOne from "memoize-one";
-
 
 /**
  * This bootstrapping method should work for many backend-driven, multi-view,
@@ -28,7 +27,7 @@ class App extends React.Component {
     this.state = {
       ready: false,
       store: null,
-      country: "Iran"
+      country: "Iran",
     };
 
     this.initialStore = {
@@ -51,26 +50,33 @@ class App extends React.Component {
 
   render() {
     const { store, country } = this.state;
+    const fetchers = [
+      new FetchObject(covidData, setCovidData, { country: "Italy" }),
+      new FetchObject(covidData, setCovidData, { country: "France" }),
+    ];
 
     return store ? (
       <Provider store={store}>
-        <input onChange={e => this.setState({country: e.target.value})}/>
+        <input onChange={(e) => this.setState({ country: e.target.value })} />
         <Router>
-          <div style={{display: "flex", flexDirection: "column"}}>
-            <Link to={'/reactathon'}>
-              reactathon
-            </Link>
-            <Link to={'/another-place'}>another place</Link>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Link to={"/reactathon"}>reactathon</Link>
+            <Link to={"/another-place"}>another place</Link>
             <Switch>
-              <Route path={'/another-place'}><span>Another place</span></Route>
+              <Route path={"/another-place"}>
+                <span>Another place</span>
+              </Route>
               <Route path={"/reactathon"}>
-                <Fetcher
-                  request={memoizeOne(covidData)}
-                  args={{ country }}
-                  dispatch={setCovidData}
-                >
-                  <Reactathon />
-                </Fetcher>
+                <MultiFetcher fetchGroup={fetchers}>
+                  <Reactathon/>
+                </MultiFetcher>
+                {/*<Fetcher*/}
+                {/*  request={memoizeOne(covidData)}*/}
+                {/*  args={{ country }}*/}
+                {/*  dispatch={setCovidData}*/}
+                {/*>*/}
+                {/*  <Reactathon />*/}
+                {/*</Fetcher>*/}
               </Route>
             </Switch>
           </div>
